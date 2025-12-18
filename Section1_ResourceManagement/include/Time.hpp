@@ -13,6 +13,7 @@ public:
     Time();
     Time(int h, int m);
     
+
     int getHour() const;
     int getMinute() const;
     
@@ -20,8 +21,11 @@ public:
     
     bool operator<(const Time& other) const;
     bool operator==(const Time& other) const;
+    bool operator<=(const Time& other) const;
+    bool operator>=(const Time& other) const;
     bool operator>(const Time& other) const;
     bool operator!=(const Time& other) const;
+    
     int operator-(const Time& other) const;
     
     std::string toString() const;
@@ -29,4 +33,4 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Time& time);
 };
 
-#endif
+#endif 

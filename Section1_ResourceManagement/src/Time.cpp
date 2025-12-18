@@ -19,13 +19,24 @@ bool Time::isValid() const {
 }
 
 bool Time::operator<(const Time& other) const {
-    if (hour != other.hour) 
-        return hour < other.hour;
+    if (hour != other.hour) return hour < other.hour;
     return minute < other.minute;
 }
 
 bool Time::operator==(const Time& other) const {
-    return (hour == other.hour) && (minute == other.minute);
+    return hour == other.hour && minute == other.minute;
+}
+
+bool Time::operator<=(const Time& other) const {
+    return *this < other || *this == other;
+}
+
+bool Time::operator>=(const Time& other) const {
+    return !(*this < other);
+}
+
+bool Time::operator>(const Time& other) const {
+    return !(*this <= other);
 }
 
 bool Time::operator!=(const Time& other) const {
@@ -40,7 +51,8 @@ int Time::operator-(const Time& other) const {
 
 std::string Time::toString() const {
     std::ostringstream oss;
-    oss << std::setw(2) << std::setfill('0') << hour << ":" << std::setw(2) << std::setfill('0') << minute;
+    oss << std::setw(2) << std::setfill('0') << hour << ":"
+        << std::setw(2) << std::setfill('0') << minute;
     return oss.str();
 }
 
